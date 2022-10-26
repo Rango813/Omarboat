@@ -1,13 +1,12 @@
 package frc.robot;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
+import frc.robot.Subsystems.Drivetrain;
 
 
 /**
@@ -21,18 +20,14 @@ public class RobotContainer {
     private final XboxController driver = new XboxController(Constants.driverID);
     private final XboxController operator = new XboxController(Constants.operatorID);
 
-    CANSparkMax frontRight =
-        new CANSparkMax(Constants.Motors.frontRightID, CANSparkMaxLowLevel.MotorType.kBrushless);
-    CANSparkMax frontLeft =
-        new CANSparkMax(Constants.Motors.frontleftID, CANSparkMaxLowLevel.MotorType.kBrushless);
-    CANSparkMax backLeft =
-        new CANSparkMax(Constants.Motors.backrleftID, CANSparkMaxLowLevel.MotorType.kBrushless);
-    CANSparkMax backRight =
-        new CANSparkMax(Constants.Motors.backrightID, CANSparkMaxLowLevel.MotorType.kBrushless);
 
 
     // Initialize AutoChooser Sendable
     private final SendableChooser<Command> autoChooser = new SendableChooser<>();
+
+    Drivetrain drivetrain = new Drivetrain();
+
+
 
     // Field Relative and openLoop Variables
     boolean fieldRelative;
